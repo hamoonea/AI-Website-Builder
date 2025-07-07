@@ -1,4 +1,4 @@
-# AI Site MVP
+# AI Website Builder MVP
 
 A full-stack web application that uses AI to generate and modify HTML/CSS code through natural language prompts and interactive chat.
 
