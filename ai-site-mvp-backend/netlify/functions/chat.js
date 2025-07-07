@@ -7,9 +7,10 @@ const MODEL = process.env.OPENAI_MODEL || "gpt-3.5-turbo";
 exports.handler = async (event, context) => {
   // Enable CORS
   const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Origin": "http://localhost:4200",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Credentials": "true",
   };
 
   // Handle preflight requests
