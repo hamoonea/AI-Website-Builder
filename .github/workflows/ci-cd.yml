@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   test-frontend:
     runs-on: ubuntu-latest
@@ -99,6 +108,8 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./ai-site-mvp-frontend/dist/ai-site-mvp-frontend
         force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
 
   deploy-backend:
     needs: test-backend
