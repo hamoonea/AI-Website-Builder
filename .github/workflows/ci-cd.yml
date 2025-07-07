@@ -97,14 +97,17 @@ jobs:
         cd ai-site-mvp-frontend
         npm run build:github
     
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./ai-site-mvp-frontend/dist/ai-site-mvp-frontend
-        force_orphan: true
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
+        path: './ai-site-mvp-frontend/dist/ai-site-mvp-frontend'
+    
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
 
   deploy-backend:
     needs: test-backend
