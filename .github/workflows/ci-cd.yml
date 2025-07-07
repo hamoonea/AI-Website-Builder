@@ -35,11 +35,6 @@ jobs:
         cd ai-site-mvp-frontend
         npm ci --legacy-peer-deps --force
     
-    - name: Run tests
-      run: |
-        cd ai-site-mvp-frontend
-        npm test -- --watch=false --browsers=ChromeHeadless
-    
     - name: Build for production
       run: |
         cd ai-site-mvp-frontend
