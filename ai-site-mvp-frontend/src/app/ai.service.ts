@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { DiffUtil, DiffResult } from './utils/diff.util';
+import { environment } from '../environments/environment';
 
 export interface ChatMessage {
   id: string;
@@ -36,7 +37,7 @@ export class AiService {
   constructor(private http: HttpClient) {}
 
   generate(prompt: string): Observable<{ html: string }> {
-    return this.http.post<{ html: string }>('/api/generate', { prompt });
+    return this.http.post<{ html: string }>(`${environment.apiUrl}/api/generate`, { prompt });
   }
 
   chat(message: string, currentCode: string): Observable<{ 
@@ -71,7 +72,7 @@ export class AiService {
       response: string; 
       codeChanges: CodeChange[]; 
       updatedCode?: string;
-    }>('/api/chat', {
+    }>(`${environment.apiUrl}/api/chat`, {
       message,
       currentCode,
       conversationHistory: context.messages.map(msg => ({
