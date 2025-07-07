@@ -4,9 +4,19 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const MODEL = process.env.OPENAI_MODEL || "gpt-3.5-turbo";
 
 exports.handler = async (event, context) => {
-  // Enable CORS
+  // Enable CORS for multiple origins
+  const allowedOrigins = [
+    "http://localhost:4200",
+    "https://hamoonea.github.io",
+  ];
+
+  const origin = event.headers.origin || event.headers.Origin;
+  const corsOrigin = allowedOrigins.includes(origin)
+    ? origin
+    : allowedOrigins[0];
+
   const headers = {
-    "Access-Control-Allow-Origin": "http://localhost:4200",
+    "Access-Control-Allow-Origin": corsOrigin,
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
     "Access-Control-Allow-Credentials": "true",
