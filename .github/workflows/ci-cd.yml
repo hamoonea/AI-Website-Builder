@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd ai-site-mvp-frontend
-        npm ci
+        npm ci --legacy-peer-deps
     
     - name: Run tests
       run: |
@@ -86,7 +86,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd ai-site-mvp-frontend
-        npm ci
+        npm ci --legacy-peer-deps
     
     - name: Build for GitHub Pages
       run: |
