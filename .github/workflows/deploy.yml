@@ -24,7 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd ai-site-mvp-frontend
-        npm ci --legacy-peer-deps
+        npm ci --legacy-peer-deps --force
     
     - name: Build for GitHub Pages
       run: |
